@@ -59,7 +59,7 @@ pipeline {
     }
     post {
         success {
-            sh 'cd "/var/lib/jenkins/workspace/LaravelTest"'
+            sh 'cd "/var/lib/jenkins/workspace/laravelTest"'
             sh 'rm -rf artifact.zip'
             sh 'zip -r artifact.zip . -x "*node_modules**"'
             withCredentials([sshUserPrivateKey(credentialsId: "final-project", keyFileVariable: 'keyfile')]) {
