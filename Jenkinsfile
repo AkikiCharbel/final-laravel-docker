@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-        staging_server="ubuntu@ec2-3-227-17-44.compute-1.amazonaws.com"
+        staging_server="ubuntu@ec2-3-216-78-67.compute-1.amazonaws.com"
     }
     stages {
         stage("Verify tooling") {
