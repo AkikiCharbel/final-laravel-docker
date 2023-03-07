@@ -59,11 +59,11 @@ pipeline {
     }
     post {
         success {
-            sh 'cd "/var/lib/jenkins/workspace/laravelTest"'
+            sh 'cd "/var/lib/jenkins/workspace/final-project"'
             sh 'rm -rf artifact.zip'
             sh 'zip -r artifact.zip . -x "*node_modules**"'
             withCredentials([sshUserPrivateKey(credentialsId: "final-project", keyFileVariable: 'keyfile')]) {
-                sh 'scp -v -o StrictHostKeyChecking=no -i ${keyfile} /var/lib/jenkins/workspace/LaravelTest/artifact.zip ${staging_server}:/home/ec2-user/artifact'
+                sh 'scp -v -o StrictHostKeyChecking=no -i ${keyfile} /var/lib/jenkins/workspace/final-project/artifact.zip ${staging_server}:/home/ec2-user/artifact'
             }
             sshagent(credentials: ['final-project']) {
                 sh 'ssh -o StrictHostKeyChecking=no ${staging_server} unzip -o /home/ec2-user/artifact/artifact.zip -d /var/www/html'
