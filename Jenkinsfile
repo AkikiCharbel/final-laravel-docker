@@ -46,8 +46,8 @@ pipeline {
         }
         stage("Populate .env file") {
             steps {
-                dir("/var/lib/jenkins/workspace/envs/final-project") {
-                    fileOperations([fileCopyOperation(excludes: '', flattenFiles: true, includes: '.env.example', targetLocation: "${WORKSPACE}/.env")])
+                dir("/var/lib/jenkins/workspace/envs/laravel-test") {
+                    fileOperations([fileCopyOperation(excludes: '', flattenFiles: true, includes: '.env', targetLocation: "${WORKSPACE}")])
                 }
             }
         }              
